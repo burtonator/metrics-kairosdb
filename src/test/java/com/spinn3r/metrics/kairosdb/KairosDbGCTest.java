@@ -16,7 +16,8 @@ import java.util.Map;
 
 import static com.spinn3r.metrics.kairosdb.TaggedMetrics.*;
 import static org.junit.Assert.*;
-import static org.mockito.Matchers.*;
+import static org.mockito.Matchers.any;
+import static org.mockito.Matchers.anyInt;
 import static org.mockito.Mockito.*;
 
 public class KairosDbGCTest {
@@ -32,10 +33,9 @@ public class KairosDbGCTest {
 
     @Before
     public void setUp() throws Exception {
-        when(socket.getOutputStream()).thenReturn(output);
 
-        when(socketFactory.createSocket(any(InetAddress.class),
-                                        anyInt())).thenReturn(socket);
+        when(socket.getOutputStream()).thenReturn(output);
+        when(socketFactory.createSocket(any(InetAddress.class), anyInt())).thenReturn(socket);
 
     }
 
